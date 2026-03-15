@@ -605,19 +605,13 @@ function renderMap(hops) {
     iconCreateFunction: function(c) {
       const children = c.getAllChildMarkers();
       const nums = children.map(m => m._hopN).filter(Boolean).sort((a,b) => a - b);
-      // Build compact label: consecutive runs as ranges, e.g. "2-3" or "4-6,9"
+      // Build compact label using full range from min to max hop number
+      // Missing hops in between (timeouts/private IPs) are assumed to be in the same region
       let label;
       if (nums.length === 1) {
         label = '' + nums[0];
       } else {
-        const parts = [];
-        let start = nums[0], end = nums[0];
-        for (let i = 1; i < nums.length; i++) {
-          if (nums[i] === end + 1) { end = nums[i]; }
-          else { parts.push(start === end ? '' + start : start + '-' + end); start = end = nums[i]; }
-        }
-        parts.push(start === end ? '' + start : start + '-' + end);
-        label = parts.join(',');
+        label = nums[0] + '-' + nums[nums.length - 1];
       }
       const hasLast = children.some(m => m._isLast);
       const hasFirst = children.some(m => m._isFirst);
