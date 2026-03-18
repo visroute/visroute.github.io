@@ -13,146 +13,66 @@
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #06090f;
-  --bg2: #0b1018;
-  --surface: #0f1520;
-  --surface2: #151d2c;
-  --surface3: #1b2538;
-  --border: #1c2840;
-  --border2: #263350;
-  --text: #e2e8f0;
-  --text2: #8892a8;
-  --text3: #4a5568;
-  --blue: #3b82f6;
-  --blue2: #60a5fa;
-  --blue-g: rgba(59,130,246,.12);
-  --blue-g2: rgba(59,130,246,.25);
-  --green: #10b981;
-  --green2: #34d399;
-  --green-g: rgba(16,185,129,.12);
-  --amber: #f59e0b;
-  --red: #ef4444;
-  --cyan: #22d3ee;
-  --purple: #a78bfa;
-  --mono: 'JetBrains Mono', monospace;
-  --sans: 'Inter', system-ui, sans-serif;
-  --r: 8px;
-  --r2: 12px;
+  --bg:#06090f; --bg2:#0b1018; --surface:#0f1520; --surface2:#151d2c; --surface3:#1b2538;
+  --border:#1c2840; --border2:#263350; --text:#e2e8f0; --text2:#8892a8; --text3:#4a5568;
+  --blue:#3b82f6; --blue2:#60a5fa; --blue-g:rgba(59,130,246,.12); --blue-g2:rgba(59,130,246,.25);
+  --green:#10b981; --green2:#34d399; --green-g:rgba(16,185,129,.12);
+  --amber:#f59e0b; --red:#ef4444; --cyan:#22d3ee; --purple:#a78bfa;
+  --mono:'JetBrains Mono',monospace; --sans:'Inter',system-ui,sans-serif;
+  --r:8px; --r2:12px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{height:100%;overflow:hidden}
 body{background:var(--bg);color:var(--text);font-family:var(--sans);display:flex;flex-direction:column}
 
 /* ═══ HEADER ═══ */
-.hdr{
-  display:flex;align-items:center;gap:12px;
-  padding:0 20px;height:54px;
-  background:linear-gradient(180deg,var(--surface) 0%,var(--bg2) 100%);
-  border-bottom:1px solid var(--border);
-  flex-shrink:0;z-index:900;
-}
+.hdr{display:flex;align-items:center;gap:12px;padding:0 20px;height:54px;background:linear-gradient(180deg,var(--surface),var(--bg2));border-bottom:1px solid var(--border);flex-shrink:0;z-index:900}
 .brand{display:flex;align-items:center;gap:9px;flex-shrink:0;text-decoration:none;color:var(--text)}
-.brand-ico{
-  width:32px;height:32px;border-radius:8px;
-  background:linear-gradient(135deg,var(--blue),#6366f1);
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:0 0 20px rgba(99,102,241,.3);
-}
+.brand-ico{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--blue),#6366f1);display:flex;align-items:center;justify-content:center;box-shadow:0 0 20px rgba(99,102,241,.3)}
 .brand-ico svg{width:17px;height:17px}
 .brand-txt{font-family:var(--mono);font-size:15px;font-weight:700;letter-spacing:-.02em}
 .brand-txt span{color:var(--blue2)}
 
-/* Search with history dropdown */
-.search-wrap{position:relative;flex:1;max-width:480px;min-width:200px;display:flex}
-.search-wrap input{
-  flex:1;background:var(--bg);border:1.5px solid var(--border);border-right:0;
-  border-radius:var(--r) 0 0 var(--r);padding:8px 14px;padding-right:30px;
-  font-family:var(--mono);font-size:13px;color:var(--text);outline:0;
-  transition:border .2s,box-shadow .2s;
-}
+.search-wrap{position:relative;flex:1;min-width:200px;display:flex}
+.search-wrap input{flex:1;background:var(--bg);border:1.5px solid var(--border);border-right:0;border-radius:var(--r) 0 0 var(--r);padding:8px 30px 8px 14px;font-family:var(--mono);font-size:13px;color:var(--text);outline:0;transition:border .2s,box-shadow .2s}
 .search-wrap input:focus{border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-g)}
 .search-wrap input::placeholder{color:var(--text3)}
-.search-wrap .hist-btn{
-  position:absolute;right:90px;top:50%;transform:translateY(-50%);
-  background:none;border:none;color:var(--text3);cursor:pointer;padding:4px;
-  display:flex;align-items:center;z-index:2;transition:color .15s;
-}
+.search-wrap .hist-btn{position:absolute;right:100px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--text3);cursor:pointer;padding:4px;display:flex;align-items:center;z-index:2;transition:color .15s}
 .search-wrap .hist-btn:hover{color:var(--blue2)}
-.search-wrap .trace-btn{
-  padding:8px 18px;
-  background:linear-gradient(135deg,var(--blue),#6366f1);
-  color:#fff;font-family:var(--sans);font-weight:700;font-size:12px;
-  letter-spacing:.05em;border:0;border-radius:0 var(--r) var(--r) 0;
-  cursor:pointer;display:flex;align-items:center;gap:5px;
-  transition:opacity .15s;white-space:nowrap;
-}
+.search-wrap .trace-btn{padding:8px 18px;background:linear-gradient(135deg,var(--blue),#6366f1);color:#fff;font-family:var(--sans);font-weight:700;font-size:12px;letter-spacing:.05em;border:0;border-radius:0 var(--r) var(--r) 0;cursor:pointer;display:flex;align-items:center;gap:5px;transition:opacity .15s;white-space:nowrap}
 .search-wrap .trace-btn:hover{opacity:.85}
 .search-wrap .trace-btn:disabled{opacity:.35;cursor:not-allowed}
 
-/* History dropdown */
-.hist-drop{
-  position:absolute;top:100%;left:0;right:0;margin-top:4px;
-  background:var(--surface);border:1px solid var(--border2);
-  border-radius:var(--r);box-shadow:0 12px 40px rgba(0,0,0,.5);
-  z-index:999;display:none;max-height:240px;overflow-y:auto;
-}
+.hist-drop{position:absolute;top:100%;left:0;right:0;margin-top:4px;background:var(--surface);border:1px solid var(--border2);border-radius:var(--r);box-shadow:0 12px 40px rgba(0,0,0,.5);z-index:999;display:none;max-height:240px;overflow-y:auto}
 .hist-drop.open{display:block}
-.hist-drop .hist-head{
-  padding:8px 12px;font-size:10px;font-weight:600;text-transform:uppercase;
-  letter-spacing:.08em;color:var(--text3);border-bottom:1px solid var(--border);
-  display:flex;justify-content:space-between;align-items:center;
-}
-.hist-drop .hist-clear{
-  font-size:10px;color:var(--text3);cursor:pointer;background:none;border:none;
-  text-transform:uppercase;letter-spacing:.06em;transition:color .15s;
-}
+.hist-drop .hist-head{padding:8px 12px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.hist-drop .hist-clear{font-size:10px;color:var(--text3);cursor:pointer;background:none;border:none;text-transform:uppercase;letter-spacing:.06em;transition:color .15s}
 .hist-drop .hist-clear:hover{color:var(--red)}
-.hist-drop .hist-item{
-  padding:8px 12px;font-family:var(--mono);font-size:12px;
-  cursor:pointer;transition:background .1s;display:flex;align-items:center;gap:8px;
-  color:var(--text2);
-}
+.hist-drop .hist-item{padding:8px 12px;font-family:var(--mono);font-size:12px;cursor:pointer;transition:background .1s;display:flex;align-items:center;gap:8px;color:var(--text2)}
 .hist-drop .hist-item:hover{background:var(--surface2);color:var(--text)}
 .hist-drop .hist-item .hi-dot{width:5px;height:5px;border-radius:50%;background:var(--blue);flex-shrink:0;opacity:.5}
 
-/* Source / Presets */
-.src-sel{
-  background:var(--bg);color:var(--text2);border:1.5px solid var(--border);
-  border-radius:var(--r);padding:7px 10px;font-size:11px;cursor:pointer;outline:0;
-  font-family:var(--sans);transition:border .15s;
-}
+.src-sel{background:var(--bg);color:var(--text2);border:1.5px solid var(--border);border-radius:var(--r);padding:7px 10px;font-size:11px;cursor:pointer;outline:0;font-family:var(--sans);transition:border .15s}
 .src-sel:focus{border-color:var(--blue)}
-
 .presets{display:flex;gap:4px;align-items:center}
 .presets .plbl{font-size:10px;color:var(--text3);margin-right:2px;text-transform:uppercase;letter-spacing:.06em}
-.pbtn{
-  font-family:var(--mono);font-size:10px;padding:5px 9px;
-  background:var(--surface2);border:1px solid var(--border);border-radius:6px;
-  color:var(--text3);cursor:pointer;transition:all .12s;
-}
+.pbtn{font-family:var(--mono);font-size:10px;padding:5px 9px;background:var(--surface2);border:1px solid var(--border);border-radius:6px;color:var(--text3);cursor:pointer;transition:all .12s}
 .pbtn:hover{color:var(--blue2);border-color:var(--blue);background:var(--blue-g)}
 
-/* Status */
-.status{
-  margin-left:auto;font-family:var(--mono);font-size:10px;
-  padding:5px 12px;border-radius:20px;
-  background:var(--surface2);border:1px solid var(--border);
-  color:var(--text3);display:flex;align-items:center;gap:6px;flex-shrink:0;
-}
+.status{font-family:var(--mono);font-size:10px;padding:5px 12px;border-radius:20px;background:var(--surface2);border:1px solid var(--border);color:var(--text3);display:flex;align-items:center;gap:6px;flex-shrink:0;max-width:260px;overflow:hidden}
 .status.on{color:var(--blue2);border-color:rgba(59,130,246,.25)}
 .status.ok{color:var(--green2);border-color:rgba(16,185,129,.25)}
 .status.err{color:var(--red);border-color:rgba(239,68,68,.25)}
+.status span:last-child{overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
 .sdot{width:5px;height:5px;border-radius:50%;background:var(--text3);flex-shrink:0}
 .status.on .sdot{background:var(--blue2);animation:pulse 1.2s infinite}
 .status.ok .sdot{background:var(--green2)}
 .status.err .sdot{background:var(--red)}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.2}}
 
-/* ═══ PROGRESS ═══ */
 .pbar-track{height:2px;background:var(--border);flex-shrink:0}
 .pbar-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--blue),var(--purple),var(--cyan));transition:width .4s;border-radius:0 2px 2px 0}
 
-/* ═══ WORKSPACE ═══ */
 .ws{flex:1;display:flex;overflow:hidden}
 
 /* ═══ MAP ═══ */
@@ -161,88 +81,40 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);display:flex
 .leaflet-control-zoom a{background:var(--surface)!important;color:var(--text2)!important;border-color:var(--border)!important;width:30px!important;height:30px!important;line-height:30px!important;font-size:14px!important}
 .leaflet-control-zoom a:hover{background:var(--surface2)!important;color:var(--blue2)!important}
 .leaflet-control-attribution{display:none!important}
+.fit-btn{background:var(--surface)!important;color:var(--text2)!important;border:1px solid var(--border)!important;border-radius:var(--r)!important;width:30px!important;height:30px!important;display:flex!important;align-items:center!important;justify-content:center!important;cursor:pointer!important;font-size:16px!important;line-height:1!important;box-shadow:none!important;transition:background .15s,color .15s}
+.fit-btn:hover{background:var(--surface2)!important;color:var(--blue2)!important}
 .leaflet-popup-content-wrapper{background:var(--surface)!important;color:var(--text)!important;border:1px solid var(--border2)!important;border-radius:var(--r2)!important;box-shadow:0 12px 48px rgba(0,0,0,.7)!important}
 .leaflet-popup-tip{background:var(--surface)!important}
 .leaflet-popup-content{margin:12px 16px!important;font-family:var(--mono);font-size:11px;line-height:1.8}
 .leaflet-tooltip.cl{background:var(--surface)!important;color:var(--text)!important;border:1px solid var(--border2)!important;border-radius:6px!important;padding:4px 10px!important;font-family:var(--mono)!important;font-size:10px!important;font-weight:600!important;box-shadow:0 4px 20px rgba(0,0,0,.6)!important;letter-spacing:.02em!important}
 .leaflet-tooltip.cl::before{border-right-color:var(--surface)!important}
-
-/* Marker cluster overrides */
 .marker-cluster-small,.marker-cluster-medium,.marker-cluster-large{background:none!important}
-.marker-cluster-small div,.marker-cluster-medium div,.marker-cluster-large div{
-  background:var(--blue)!important;color:#fff!important;
-  font-family:var(--mono)!important;font-weight:700!important;font-size:11px!important;
-  width:32px!important;height:32px!important;margin-left:4px!important;margin-top:4px!important;
-  border-radius:50%!important;display:flex!important;align-items:center!important;justify-content:center!important;
-  border:2.5px solid rgba(255,255,255,.8)!important;
-  box-shadow:0 0 14px rgba(59,130,246,.4)!important;
-}
+.marker-cluster-small div,.marker-cluster-medium div,.marker-cluster-large div{background:var(--blue)!important;color:#fff!important;font-family:var(--mono)!important;font-weight:700!important;font-size:11px!important;width:32px!important;height:32px!important;margin-left:4px!important;margin-top:4px!important;border-radius:50%!important;display:flex!important;align-items:center!important;justify-content:center!important;border:2.5px solid rgba(255,255,255,.8)!important;box-shadow:0 0 14px rgba(59,130,246,.4)!important}
 
 /* ═══ SIDEBAR ═══ */
-.sb{
-  width:420px;background:var(--surface);border-left:1px solid var(--border);
-  display:flex;flex-direction:column;flex-shrink:0;z-index:2;
-}
-.sb-hdr{
-  padding:12px 16px;display:flex;align-items:center;
-  justify-content:space-between;border-bottom:1px solid var(--border);
-  background:linear-gradient(180deg,var(--surface2) 0%,var(--surface) 100%);
-}
+.sb{width:420px;background:var(--surface);border-left:1px solid var(--border);display:flex;flex-direction:column;flex-shrink:0;z-index:2}
+.sb-hdr{padding:12px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);background:linear-gradient(180deg,var(--surface2),var(--surface))}
 .sb-hdr h2{font-family:var(--mono);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--text3)}
-.sb-badge{
-  font-family:var(--mono);font-size:10px;font-weight:700;
-  color:var(--blue2);background:var(--blue-g);
-  padding:3px 10px;border-radius:12px;border:1px solid rgba(59,130,246,.15);
-}
-
-/* Probe */
-.probe{
-  display:none;padding:8px 16px;font-family:var(--mono);font-size:10px;
-  color:var(--text2);border-bottom:1px solid var(--border);
-  background:linear-gradient(90deg,var(--blue-g),transparent);
-  align-items:center;gap:6px;
-}
+.probe{display:none;padding:8px 16px;font-family:var(--mono);font-size:10px;color:var(--text2);border-bottom:1px solid var(--border);background:linear-gradient(90deg,var(--blue-g),transparent);align-items:center;gap:6px}
 .probe .plbl{color:var(--text3);font-size:9px;text-transform:uppercase;letter-spacing:.08em;font-weight:700}
 .probe-note{margin-left:auto;width:16px;height:16px;border-radius:50%;background:var(--surface3);color:var(--text3);font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;cursor:help;flex-shrink:0}
-
-/* Hop list */
 .hops{flex:1;overflow-y:auto;padding:4px 6px}
 .hops::-webkit-scrollbar{width:3px}
 .hops::-webkit-scrollbar-track{background:transparent}
 .hops::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
 
-/* ═══ HOP ROW ═══ */
-.hop{
-  display:flex;align-items:stretch;gap:0;
-  padding:0;margin:0;cursor:pointer;
-  transition:background .1s;position:relative;
-}
-.hop:hover{background:var(--surface2);border-radius:var(--r)}
-.hop.active{background:var(--surface2);border-radius:var(--r)}
-
-/* Timeline column */
-.hop-tl{
-  width:40px;display:flex;flex-direction:column;align-items:center;
-  flex-shrink:0;position:relative;
-}
+.hop{display:flex;align-items:stretch;gap:0;padding:0;margin:0;cursor:pointer;transition:background .1s;position:relative}
+.hop:hover,.hop.active{background:var(--surface2);border-radius:var(--r)}
+.hop-tl{width:40px;display:flex;flex-direction:column;align-items:center;flex-shrink:0;position:relative}
 .hop-tl .line{width:2px;flex:1;background:var(--border)}
 .hop:first-child .hop-tl .line:first-child{background:transparent}
 .hop:last-child .hop-tl .line:last-child{background:transparent}
-.hop-tl .dot{
-  width:28px;height:28px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  font-family:var(--mono);font-size:10px;font-weight:700;
-  flex-shrink:0;z-index:1;position:relative;
-  border:2px solid;
-  transition:transform .15s,box-shadow .15s;
-}
+.hop-tl .dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:10px;font-weight:700;flex-shrink:0;z-index:1;position:relative;border:2px solid;transition:transform .15s}
 .hop:hover .hop-tl .dot{transform:scale(1.1)}
 .hop-tl .dot.c-blue{color:var(--blue2);background:var(--blue-g);border-color:rgba(59,130,246,.3)}
 .hop-tl .dot.c-green{color:var(--green2);background:var(--green-g);border-color:rgba(16,185,129,.3);box-shadow:0 0 12px rgba(16,185,129,.2)}
 .hop-tl .dot.c-cyan{color:var(--cyan);background:rgba(34,211,238,.1);border-color:rgba(34,211,238,.3)}
 .hop-tl .dot.c-dim{color:var(--text3);background:var(--surface2);border-color:var(--border)}
-
-/* Hop body */
 .hop-bd{flex:1;padding:8px 10px 8px 4px;min-width:0}
 .hop-top{display:flex;align-items:baseline;gap:6px;flex-wrap:wrap}
 .hop-ip{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--text)}
@@ -250,151 +122,49 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);display:flex
 .hop-loc{font-size:11px;color:var(--text2);margin-top:2px}
 .hop-org{font-size:10px;color:var(--text3);margin-top:1px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .hop-geo-fix{font-size:9px;color:var(--amber);margin-top:1px}
-
-/* RTT column */
-.hop-rtt-col{
-  display:flex;flex-direction:column;align-items:flex-end;
-  justify-content:center;padding:8px 10px 8px 0;flex-shrink:0;min-width:70px;
-}
+.hop-rtt-col{display:flex;flex-direction:column;align-items:flex-end;justify-content:center;padding:8px 10px 8px 0;flex-shrink:0;min-width:70px}
 .hop-rtt-val{font-family:var(--mono);font-size:11px;font-weight:700}
-.hop-rtt-bar{
-  width:50px;height:3px;border-radius:2px;background:var(--surface3);
-  margin-top:4px;overflow:hidden;
-}
+.hop-rtt-bar{width:50px;height:3px;border-radius:2px;background:var(--surface3);margin-top:4px;overflow:hidden}
 .hop-rtt-bar .fill{height:100%;border-radius:2px;transition:width .3s}
 .c-fast{color:var(--green2)}.c-mid{color:var(--amber)}.c-slow{color:var(--red)}.c-none{color:var(--text3)}
 .bg-fast{background:var(--green2)}.bg-mid{background:var(--amber)}.bg-slow{background:var(--red)}.bg-none{background:var(--text3)}
 
-/* ═══ SUMMARY ═══ */
-.sum{
-  display:none;grid-template-columns:repeat(4,1fr);
-  border-top:1px solid var(--border);padding:10px 12px;
-  background:linear-gradient(0deg,rgba(59,130,246,.06),transparent);
-}
+.sum{display:none;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--border);padding:10px 12px;background:linear-gradient(0deg,rgba(59,130,246,.06),transparent)}
 .sum .si{text-align:center}
 .sum .sl{font-family:var(--mono);font-size:8px;text-transform:uppercase;letter-spacing:.1em;color:var(--text3);font-weight:600}
 .sum .sv{font-family:var(--mono);font-size:13px;font-weight:700;color:var(--text);margin-top:2px}
 
-/* ═══ EMPTY ═══ */
-.empty{
-  flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:20px;color:var(--text3);padding:40px 30px;text-align:center;
-}
-.empty .e-icon{
-  width:64px;height:64px;border-radius:16px;
-  background:linear-gradient(135deg,var(--blue-g),rgba(99,102,241,.08));
-  border:1px solid rgba(59,130,246,.1);
-  display:flex;align-items:center;justify-content:center;
-}
+.empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;color:var(--text3);padding:40px 30px;text-align:center}
+.empty .e-icon{width:64px;height:64px;border-radius:16px;background:linear-gradient(135deg,var(--blue-g),rgba(99,102,241,.08));border:1px solid rgba(59,130,246,.1);display:flex;align-items:center;justify-content:center}
 .empty .e-icon svg{opacity:.4}
 .empty p{font-size:12px;line-height:1.8;max-width:240px}
 .empty kbd{font-family:var(--mono);font-size:10px;padding:2px 6px;background:var(--surface2);border:1px solid var(--border);border-radius:4px;color:var(--text2)}
 
-/* ═══ RESPONSIVE ═══ */
-@media(max-width:960px){
-  .sb{width:100%;max-height:42vh;border-left:0;border-top:1px solid var(--border)}
-  .ws{flex-direction:column}
-  .presets,.src-sel{display:none}
-}
-@media(max-width:600px){
-  .hdr{padding:0 12px;gap:8px}
-  .brand-txt{display:none}
-  .search-wrap{max-width:none}
-  .sb{max-height:50vh}
-}
+@media(max-width:960px){.sb{width:100%;max-height:42vh;border-left:0;border-top:1px solid var(--border)}.ws{flex-direction:column}.presets,.src-sel{display:none}}
+@media(max-width:600px){.hdr{padding:0 12px;gap:8px}.brand-txt{display:none}.sb{max-height:50vh}}
 </style>
 </head>
 <body>
 
 <div class="hdr">
   <a class="brand" href="#">
-    <div class="brand-ico">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10A15.3 15.3 0 0 1 12 2z"/></svg>
-    </div>
+    <div class="brand-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10A15.3 15.3 0 0 1 12 2z"/></svg></div>
     <div class="brand-txt">Vis<span>Route</span></div>
   </a>
-
   <div class="search-wrap" id="searchWrap">
     <input id="target" type="text" placeholder="hostname or IP" spellcheck="false" autocomplete="off"/>
-    <button class="hist-btn" id="histBtn" onclick="toggleHistory()" title="History">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
-    </button>
-    <button class="trace-btn" id="traceBtn" onclick="runTrace()">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      TRACE
-    </button>
+    <button class="hist-btn" onclick="toggleHistory()" title="History"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+    <button class="trace-btn" id="traceBtn" onclick="runTrace()"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg> TRACE</button>
     <div class="hist-drop" id="histDrop"></div>
   </div>
-
   <select class="src-sel" id="source">
     <option value="">🌍 Detecting...</option>
-    <optgroup label="Americas">
-      <option value="US">🇺🇸 United States</option>
-      <option value="CA">🇨🇦 Canada</option>
-      <option value="MX">🇲🇽 Mexico</option>
-      <option value="BR">🇧🇷 Brazil</option>
-      <option value="AR">🇦🇷 Argentina</option>
-      <option value="CL">🇨🇱 Chile</option>
-      <option value="CO">🇨🇴 Colombia</option>
-      <option value="PE">🇵🇪 Peru</option>
-    </optgroup>
-    <optgroup label="Europe">
-      <option value="GB">🇬🇧 United Kingdom</option>
-      <option value="DE">🇩🇪 Germany</option>
-      <option value="FR">🇫🇷 France</option>
-      <option value="NL">🇳🇱 Netherlands</option>
-      <option value="SE">🇸🇪 Sweden</option>
-      <option value="NO">🇳🇴 Norway</option>
-      <option value="FI">🇫🇮 Finland</option>
-      <option value="DK">🇩🇰 Denmark</option>
-      <option value="ES">🇪🇸 Spain</option>
-      <option value="IT">🇮🇹 Italy</option>
-      <option value="PT">🇵🇹 Portugal</option>
-      <option value="PL">🇵🇱 Poland</option>
-      <option value="CZ">🇨🇿 Czechia</option>
-      <option value="AT">🇦🇹 Austria</option>
-      <option value="CH">🇨🇭 Switzerland</option>
-      <option value="BE">🇧🇪 Belgium</option>
-      <option value="IE">🇮🇪 Ireland</option>
-      <option value="RO">🇷🇴 Romania</option>
-      <option value="BG">🇧🇬 Bulgaria</option>
-      <option value="GR">🇬🇷 Greece</option>
-      <option value="UA">🇺🇦 Ukraine</option>
-      <option value="RU">🇷🇺 Russia</option>
-    </optgroup>
-    <optgroup label="Middle East">
-      <option value="IL">🇮🇱 Israel</option>
-      <option value="TR">🇹🇷 Turkey</option>
-      <option value="AE">🇦🇪 UAE</option>
-      <option value="SA">🇸🇦 Saudi Arabia</option>
-      <option value="QA">🇶🇦 Qatar</option>
-      <option value="BH">🇧🇭 Bahrain</option>
-    </optgroup>
-    <optgroup label="Asia Pacific">
-      <option value="JP">🇯🇵 Japan</option>
-      <option value="KR">🇰🇷 South Korea</option>
-      <option value="SG">🇸🇬 Singapore</option>
-      <option value="IN">🇮🇳 India</option>
-      <option value="AU">🇦🇺 Australia</option>
-      <option value="NZ">🇳🇿 New Zealand</option>
-      <option value="HK">🇭🇰 Hong Kong</option>
-      <option value="TW">🇹🇼 Taiwan</option>
-      <option value="TH">🇹🇭 Thailand</option>
-      <option value="ID">🇮🇩 Indonesia</option>
-      <option value="PH">🇵🇭 Philippines</option>
-      <option value="MY">🇲🇾 Malaysia</option>
-      <option value="VN">🇻🇳 Vietnam</option>
-      <option value="PK">🇵🇰 Pakistan</option>
-      <option value="BD">🇧🇩 Bangladesh</option>
-    </optgroup>
-    <optgroup label="Africa">
-      <option value="ZA">🇿🇦 South Africa</option>
-      <option value="NG">🇳🇬 Nigeria</option>
-      <option value="KE">🇰🇪 Kenya</option>
-      <option value="EG">🇪🇬 Egypt</option>
-    </optgroup>
+    <optgroup label="Americas"><option value="US">🇺🇸 United States</option><option value="CA">🇨🇦 Canada</option><option value="MX">🇲🇽 Mexico</option><option value="BR">🇧🇷 Brazil</option><option value="AR">🇦🇷 Argentina</option><option value="CL">🇨🇱 Chile</option><option value="CO">🇨🇴 Colombia</option><option value="PE">🇵🇪 Peru</option></optgroup>
+    <optgroup label="Europe"><option value="GB">🇬🇧 United Kingdom</option><option value="DE">🇩🇪 Germany</option><option value="FR">🇫🇷 France</option><option value="NL">🇳🇱 Netherlands</option><option value="SE">🇸🇪 Sweden</option><option value="NO">🇳🇴 Norway</option><option value="FI">🇫🇮 Finland</option><option value="DK">🇩🇰 Denmark</option><option value="ES">🇪🇸 Spain</option><option value="IT">🇮🇹 Italy</option><option value="PT">🇵🇹 Portugal</option><option value="PL">🇵🇱 Poland</option><option value="CZ">🇨🇿 Czechia</option><option value="AT">🇦🇹 Austria</option><option value="CH">🇨🇭 Switzerland</option><option value="BE">🇧🇪 Belgium</option><option value="IE">🇮🇪 Ireland</option><option value="RO">🇷🇴 Romania</option><option value="BG">🇧🇬 Bulgaria</option><option value="GR">🇬🇷 Greece</option><option value="UA">🇺🇦 Ukraine</option><option value="RU">🇷🇺 Russia</option></optgroup>
+    <optgroup label="Middle East"><option value="IL">🇮🇱 Israel</option><option value="TR">🇹🇷 Turkey</option><option value="AE">🇦🇪 UAE</option><option value="SA">🇸🇦 Saudi Arabia</option><option value="QA">🇶🇦 Qatar</option><option value="BH">🇧🇭 Bahrain</option></optgroup>
+    <optgroup label="Asia Pacific"><option value="JP">🇯🇵 Japan</option><option value="KR">🇰🇷 South Korea</option><option value="SG">🇸🇬 Singapore</option><option value="IN">🇮🇳 India</option><option value="AU">🇦🇺 Australia</option><option value="NZ">🇳🇿 New Zealand</option><option value="HK">🇭🇰 Hong Kong</option><option value="TW">🇹🇼 Taiwan</option><option value="TH">🇹🇭 Thailand</option><option value="ID">🇮🇩 Indonesia</option><option value="PH">🇵🇭 Philippines</option><option value="MY">🇲🇾 Malaysia</option><option value="VN">🇻🇳 Vietnam</option><option value="PK">🇵🇰 Pakistan</option><option value="BD">🇧🇩 Bangladesh</option></optgroup>
+    <optgroup label="Africa"><option value="ZA">🇿🇦 South Africa</option><option value="NG">🇳🇬 Nigeria</option><option value="KE">🇰🇪 Kenya</option><option value="EG">🇪🇬 Egypt</option></optgroup>
   </select>
-
   <div class="presets">
     <span class="plbl">Try</span>
     <button class="pbtn" onclick="quick('google.com')">google.com</button>
@@ -402,8 +172,6 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);display:flex
     <button class="pbtn" onclick="quick('github.com')">github.com</button>
     <button class="pbtn" onclick="quick('1.1.1.1')">1.1.1.1</button>
   </div>
-
-  <div class="status" id="sPill"><span class="sdot"></span><span id="sTxt">Ready</span></div>
 </div>
 
 <div class="pbar-track"><div class="pbar-fill" id="pbar"></div></div>
@@ -413,14 +181,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);display:flex
   <div class="sb">
     <div class="sb-hdr">
       <h2>Route Hops</h2>
-      <span class="sb-badge" id="badge">0 hops</span>
+      <div class="status" id="sPill"><span class="sdot"></span><span id="sTxt">Ready</span></div>
     </div>
-    <div class="probe" id="probe"><span class="plbl">Probe</span><span id="probeTxt"></span><span class="probe-note" title="Traces run from a GlobalPing community probe, not your machine. Results vary by probe network. Re-trace for a different probe.">?</span></div>
+    <div class="probe" id="probe"><span class="plbl">Probe</span><span id="probeTxt"></span><span class="probe-note" title="Traces run from a GlobalPing community probe, not your machine. Results vary by probe network.">?</span></div>
     <div class="hops" id="hops">
-      <div class="empty" id="empty">
-        <div class="e-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10A15.3 15.3 0 0 1 12 2z"/></svg>
-        </div>
+      <div class="empty">
+        <div class="e-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10A15.3 15.3 0 0 1 12 2z"/></svg></div>
         <p>Enter a hostname or IP and press <kbd>TRACE</kbd> to map the network route.</p>
       </div>
     </div>
@@ -434,103 +200,109 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);display:flex
 </div>
 
 <script>
-/* ═══════════════════════════════════════════════════
-   VISROUTE ENGINE
-   ═══════════════════════════════════════════════════ */
 const GP = 'https://api.globalping.io/v1';
 const $ = id => document.getElementById(id);
 const map = L.map('map', { zoomControl: true, attributionControl: false }).setView([28, 10], 2);
 L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', { maxZoom: 18, subdomains: 'abcd' }).addTo(map);
 
-let busy = false, mapLayers = [], geoCache = {}, myCountry = '', myAsn = 0, myIsp = '', hopMarkers = [], clusterGroup = null;
+let lastBounds = null;
+map.addControl(new (L.Control.extend({
+  options: { position: 'topright' },
+  onAdd() {
+    const btn = L.DomUtil.create('div', 'fit-btn');
+    btn.innerHTML = '⊡'; btn.title = 'Fit all hops';
+    L.DomEvent.disableClickPropagation(btn);
+    btn.onclick = () => lastBounds && map.fitBounds(lastBounds, { maxZoom: 8, animate: true, padding: [30, 30] });
+    return btn;
+  }
+}))());
 
-/* ── Helpers ── */
+let busy = false, mapLayers = [], geoCache = {}, myCountry = '', myAsn = 0, hopMarkers = [], clusterGroup = null;
+
 const flag = cc => cc ? cc.toUpperCase().replace(/./g, c => String.fromCodePoint(127397 + c.charCodeAt(0))) : '';
 const isPrivate = ip => {
   if (!ip || ip === '*') return true;
-  if (ip.includes(':')) return ip.startsWith('fe80') || ip.startsWith('fc') || ip.startsWith('fd') || ip === '::1';
+  if (ip.includes(':')) return /^(fe80|f[cd])/.test(ip) || ip === '::1';
   const p = ip.split('.').map(Number);
   return p.length !== 4 || p[0] === 10 || (p[0] === 172 && p[1] >= 16 && p[1] <= 31) ||
-    (p[0] === 192 && p[1] === 168) || p[0] === 127 || p[0] === 0 ||
-    (p[0] === 100 && p[1] >= 64 && p[1] <= 127) || p[0] >= 224;
+    (p[0] === 192 && p[1] === 168) || p[0] === 127 || !p[0] || (p[0] === 100 && p[1] >= 64 && p[1] <= 127) || p[0] >= 224;
 };
 const rttCls = ms => ms == null ? 'c-none' : ms < 40 ? 'c-fast' : ms < 120 ? 'c-mid' : 'c-slow';
-const rttBg = ms => ms == null ? 'bg-none' : ms < 40 ? 'bg-fast' : ms < 120 ? 'bg-mid' : 'bg-slow';
+const rttBg  = ms => ms == null ? 'bg-none' : ms < 40 ? 'bg-fast' : ms < 120 ? 'bg-mid' : 'bg-slow';
 const fmtRtt = ms => ms == null ? '* * *' : ms.toFixed(1) + ' ms';
-const dotCls = (h) => !h.ip ? 'c-dim' : h.last ? 'c-green' : h.n === 1 ? 'c-cyan' : 'c-blue';
+const dotCls = h => h._isTarget ? 'c-green' : !h.ip ? 'c-dim' : h.last ? 'c-green' : h.n === 1 ? 'c-cyan' : 'c-blue';
+const setStatus = (t, c) => { $('sTxt').textContent = t; $('sPill').className = 'status' + (c ? ' ' + c : ''); };
+const setProgress = p => $('pbar').style.width = Math.min(100, p) + '%';
+const quick = t => { $('target').value = t; runTrace(); };
 
-function setStatus(t, c) { $('sTxt').textContent = t; $('sPill').className = 'status' + (c ? ' ' + c : ''); }
-function setProgress(p) { $('pbar').style.width = Math.min(100, p) + '%'; }
-function quick(t) { $('target').value = t; runTrace(); }
 function clearAll() {
-  mapLayers.forEach(l => map.removeLayer(l)); mapLayers = []; hopMarkers = []; clusterGroup = null;
-  $('hops').innerHTML = ''; $('badge').textContent = '0 hops';
-  $('sum').style.display = 'none'; $('probe').style.display = 'none'; setProgress(0);
+  mapLayers.forEach(l => map.removeLayer(l));
+  mapLayers = []; hopMarkers = []; clusterGroup = null;
+  $('hops').innerHTML = '';
+  $('sum').style.display = 'none';
+  $('probe').style.display = 'none';
+  setProgress(0);
 }
 
-function tFetch(url, opts, ms) {
+function tFetch(url, opts, ms = 12000) {
   const c = new AbortController();
-  const t = setTimeout(() => c.abort(), ms || 12000);
+  const t = setTimeout(() => c.abort(), ms);
   return fetch(url, { ...opts, signal: c.signal }).finally(() => clearTimeout(t));
 }
 
-/* ── History ── */
-function getHistory() {
-  try { return JSON.parse(localStorage.getItem('visroute_history') || '[]'); } catch { return []; }
-}
+/* ── History (localStorage) ── */
+const getHistory = () => { try { return JSON.parse(localStorage.getItem('vr_hist') || '[]'); } catch { return []; } };
 function addHistory(target) {
-  let h = getHistory().filter(x => x !== target);
-  h.unshift(target);
-  if (h.length > 20) h = h.slice(0, 20);
-  localStorage.setItem('visroute_history', JSON.stringify(h));
+  const h = [target, ...getHistory().filter(x => x !== target)].slice(0, 20);
+  localStorage.setItem('vr_hist', JSON.stringify(h));
 }
 function toggleHistory() {
-  const drop = $('histDrop');
-  if (drop.classList.contains('open')) { drop.classList.remove('open'); return; }
-  const items = getHistory();
-  if (!items.length) { drop.innerHTML = '<div style="padding:12px;font-size:11px;color:var(--text3);text-align:center">No history yet</div>'; }
-  else {
-    drop.innerHTML = '<div class="hist-head"><span>Recent targets</span><button class="hist-clear" onclick="clearHistory()">Clear</button></div>' +
-      items.map(t => '<div class="hist-item" onclick="selectHistory(\'' + t.replace(/'/g, "\\'") + '\')"><span class="hi-dot"></span>' + t + '</div>').join('');
+  const d = $('histDrop');
+  if (d.classList.toggle('open')) {
+    const items = getHistory();
+    d.innerHTML = items.length
+      ? '<div class="hist-head"><span>Recent</span><button class="hist-clear" onclick="localStorage.removeItem(\'vr_hist\');$(\'histDrop\').classList.remove(\'open\')">Clear</button></div>' +
+        items.map(t => `<div class="hist-item" onclick="$('target').value='${t.replace(/'/g,"\\'")}';$('histDrop').classList.remove('open');runTrace()"><span class="hi-dot"></span>${t}</div>`).join('')
+      : '<div style="padding:12px;font-size:11px;color:var(--text3);text-align:center">No history</div>';
   }
-  drop.classList.add('open');
 }
-function selectHistory(t) { $('target').value = t; $('histDrop').classList.remove('open'); runTrace(); }
-function clearHistory() { localStorage.removeItem('visroute_history'); $('histDrop').classList.remove('open'); }
 document.addEventListener('click', e => { if (!$('searchWrap').contains(e.target)) $('histDrop').classList.remove('open'); });
 
-/* ── Geolocation ── */
-const geoProviders = [
-  async ip => { const r = await tFetch('https://ipwho.is/' + ip, {}, 5000); const d = await r.json(); if (d.success !== false && d.latitude) return { lat: d.latitude, lon: d.longitude, city: d.city || '', cc: d.country_code || '', country: d.country || '', org: d.connection?.isp || '', asn: d.connection?.asn ? 'AS' + d.connection.asn : '' }; },
-  async ip => { const r = await tFetch('https://get.geojs.io/v1/ip/geo/' + ip + '.json', {}, 5000); const d = await r.json(); if (d.latitude) return { lat: +d.latitude, lon: +d.longitude, city: d.city || '', cc: d.country_code || '', country: d.country || '', org: d.organization_name || '', asn: d.asn ? 'AS' + d.asn : '' }; },
-  async ip => { const r = await tFetch('https://reallyfreegeoip.org/json/' + ip, {}, 5000); const d = await r.json(); if (d.latitude) return { lat: d.latitude, lon: d.longitude, city: d.city || '', cc: d.country_code || '', country: d.country_name || '', org: '', asn: '' }; },
+/* ── Geolocation (3 providers, 3 concurrent workers) ── */
+const GEO = [
+  async ip => { const d = await (await tFetch('https://ipwho.is/' + ip, {}, 5000)).json(); if (d.success !== false && d.latitude) return { lat: d.latitude, lon: d.longitude, city: d.city || '', cc: d.country_code || '', country: d.country || '', org: d.connection?.isp || '', asn: d.connection?.asn ? 'AS' + d.connection.asn : '' }; },
+  async ip => { const d = await (await tFetch('https://get.geojs.io/v1/ip/geo/' + ip + '.json', {}, 5000)).json(); if (d.latitude) return { lat: +d.latitude, lon: +d.longitude, city: d.city || '', cc: d.country_code || '', country: d.country || '', org: d.organization_name || '', asn: d.asn ? 'AS' + d.asn : '' }; },
+  async ip => { const d = await (await tFetch('https://reallyfreegeoip.org/json/' + ip, {}, 5000)).json(); if (d.latitude) return { lat: d.latitude, lon: d.longitude, city: d.city || '', cc: d.country_code || '', country: d.country_name || '', org: '', asn: '' }; },
 ];
 let bestGeo = 0;
+
 async function geolocate(ip) {
   if (isPrivate(ip)) return null;
   if (geoCache[ip]) return geoCache[ip];
-  for (const i of [bestGeo, ...([0,1,2].filter(j => j !== bestGeo))]) {
-    try { const g = await geoProviders[i](ip); if (g?.lat) { geoCache[ip] = g; bestGeo = i; return g; } } catch {}
+  for (const i of [bestGeo, ...([0, 1, 2].filter(j => j !== bestGeo))]) {
+    try { const g = await GEO[i](ip); if (g?.lat) { geoCache[ip] = g; bestGeo = i; return g; } } catch {}
   }
   return null;
 }
+
 async function geoAll(ips) {
   const out = Array(ips.length).fill(null);
   const q = ips.map((ip, i) => ({ ip, i })).filter(x => x.ip && !isPrivate(x.ip));
-  const total = q.length; let done = 0;
-  const work = async () => { while (q.length) { const { ip, i } = q.shift(); out[i] = await geolocate(ip); done++; setStatus('Geolocating ' + done + '/' + total, 'on'); setProgress(72 + (done / total) * 18); } };
+  const total = q.length;
+  let done = 0;
+  const work = async () => { while (q.length) { const { ip, i } = q.shift(); out[i] = await geolocate(ip); setStatus(`Geolocating ${++done}/${total}`, 'on'); setProgress(72 + (done / total) * 18); } };
   await Promise.all([work(), work(), work()]);
   return out;
 }
 
-/* ── Geo helpers ── */
+/* ── Geo math ── */
 function haversine(a, b) {
-  const r = Math.PI / 180, dLat = (b[0]-a[0])*r, dLon = (b[1]-a[1])*r;
-  const x = Math.sin(dLat/2)**2 + Math.cos(a[0]*r)*Math.cos(b[0]*r)*Math.sin(dLon/2)**2;
+  const r = Math.PI / 180, dLat = (b[0] - a[0]) * r, dLon = (b[1] - a[1]) * r;
+  const x = Math.sin(dLat / 2) ** 2 + Math.cos(a[0] * r) * Math.cos(b[0] * r) * Math.sin(dLon / 2) ** 2;
   return 6371 * 2 * Math.atan2(Math.sqrt(x), Math.sqrt(1 - x));
 }
-function geodesicArc(a, b, n) {
-  n = n || 48;
+
+function geodesicArc(a, b, n = 48) {
   const R = d => d*Math.PI/180, D = r => r*180/Math.PI;
   const f1=R(a[0]),l1=R(a[1]),f2=R(b[0]),l2=R(b[1]);
   const d = 2*Math.asin(Math.sqrt(Math.sin((f2-f1)/2)**2+Math.cos(f1)*Math.cos(f2)*Math.sin((l2-l1)/2)**2));
@@ -550,114 +322,92 @@ function geodesicArc(a, b, n) {
 function fixGeoOutliers(hops, pLat, pLon) {
   const gh = hops.filter(h => h.geo && h.rtt != null);
   if (!gh.length) return;
+
+  // Flag impossible locations based on RTT vs distance from probe
   for (const h of gh) {
-    if (h.last) continue; // never correct the destination — trust the geo DB for the final hop
-    const dist = haversine([pLat, pLon], [h.geo.lat, h.geo.lon]);
-    if (dist > Math.max(800, h.rtt * 150)) h.geo._outlier = true;
+    if (h.last) continue;
+    if (haversine([pLat, pLon], [h.geo.lat, h.geo.lon]) > Math.max(800, h.rtt * 150))
+      h.geo._outlier = true;
   }
+
+  // Flag consecutive pairs with huge distance but tiny RTT diff
   for (let i = 1; i < gh.length; i++) {
-    const p = gh[i-1], c = gh[i];
-    if (p.geo._outlier || c.geo._outlier || p.last || c.last) continue; // never flag destination
-    const dist = haversine([p.geo.lat,p.geo.lon],[c.geo.lat,c.geo.lon]);
-    if (dist > 2000 && Math.abs((c.rtt||0)-(p.rtt||0)) < 15) {
-      if (haversine([pLat,pLon],[c.geo.lat,c.geo.lon]) > haversine([pLat,pLon],[p.geo.lat,p.geo.lon])) c.geo._outlier = true;
-      else p.geo._outlier = true;
+    const [p, c] = [gh[i - 1], gh[i]];
+    if (p.geo._outlier || c.geo._outlier || p.last || c.last) continue;
+    if (haversine([p.geo.lat, p.geo.lon], [c.geo.lat, c.geo.lon]) > 2000 && Math.abs((c.rtt || 0) - (p.rtt || 0)) < 15) {
+      (haversine([pLat, pLon], [c.geo.lat, c.geo.lon]) > haversine([pLat, pLon], [p.geo.lat, p.geo.lon]) ? c : p).geo._outlier = true;
     }
   }
+
+  // Correct outliers by inheriting nearest valid neighbor's location
   for (const h of hops) {
     if (!h.geo?._outlier) continue;
-    h._origGeo = { ...h.geo };
+    const orig = h.geo;
     let best = null, bd = Infinity;
-    for (const o of hops) { if (o.geo && !o.geo._outlier && o !== h) { const d = Math.abs(o.n - h.n); if (d < bd) { bd = d; best = o; } } }
+    for (const o of hops) if (o.geo && !o.geo._outlier && o !== h && Math.abs(o.n - h.n) < bd) { bd = Math.abs(o.n - h.n); best = o; }
     if (best) {
-      const orig = h.geo;
-      h.geo = { lat: best.geo.lat, lon: best.geo.lon, city: best.geo.city, cc: best.geo.cc, country: best.geo.country, org: orig.org, asn: orig.asn, _corrected: true, _outlier: false, _origCountry: orig.country, _origCity: orig.city };
+      h._origGeo = { ...orig };
+      h.geo = { lat: best.geo.lat, lon: best.geo.lon, city: best.geo.city, cc: best.geo.cc, country: best.geo.country, org: orig.org, asn: orig.asn, _corrected: true, _origCountry: orig.country, _origCity: orig.city };
     }
   }
 }
 
-/* ═══ MAP RENDERING — ONE MARKER PER HOP ═══ */
+/* ═══ MAP RENDERING ═══ */
 function renderMap(hops) {
-  const geoHops = hops.filter(h => h.geo);
-  if (!geoHops.length) return;
+  const gh = hops.filter(h => h.geo);
+  if (!gh.length) return;
 
-  // Fit bounds
-  const bounds = L.latLngBounds(geoHops.map(h => [h.geo.lat, h.geo.lon]));
-  if (geoHops.length > 1) map.fitBounds(bounds.pad(0.12), { maxZoom: 8, animate: true, duration: 0.7 });
-  else map.setView([geoHops[0].geo.lat, geoHops[0].geo.lon], 6, { animate: true });
+  const bounds = L.latLngBounds(gh.map(h => [h.geo.lat, h.geo.lon]));
+  lastBounds = bounds.pad(0.12);
+  gh.length > 1 ? map.fitBounds(lastBounds, { maxZoom: 8, animate: true, duration: 0.7 }) : map.setView([gh[0].geo.lat, gh[0].geo.lon], 6, { animate: true });
 
-  // Arcs between consecutive geo hops (use actual geo coords)
-  for (let i = 1; i < geoHops.length; i++) {
-    const a = [geoHops[i-1].geo.lat, geoHops[i-1].geo.lon];
-    const b = [geoHops[i].geo.lat, geoHops[i].geo.lon];
-    const arc = geodesicArc(a, b);
+  // Arcs between consecutive hops — geodesic unless it crosses the antimeridian
+  for (let i = 1; i < gh.length; i++) {
+    const a = [gh[i-1].geo.lat, gh[i-1].geo.lon], b = [gh[i].geo.lat, gh[i].geo.lon];
+    const arc = Math.abs(a[1] - b[1]) > 180 ? [a, b] : geodesicArc(a, b);
     mapLayers.push(L.polyline(arc, { color: '#3b82f6', weight: 6, opacity: .06, lineCap: 'round' }).addTo(map));
     mapLayers.push(L.polyline(arc, { color: '#3b82f6', weight: 2, opacity: .55, dashArray: '6 4', lineCap: 'round' }).addTo(map));
   }
 
-  // Marker cluster group — overlapping markers stack naturally, expand on zoom
+  // Cluster group
   const cluster = L.markerClusterGroup({
-    maxClusterRadius: 35,
-    spiderfyOnMaxZoom: true,
-    showCoverageOnHover: false,
-    zoomToBoundsOnClick: true,
-    spiderfyDistanceMultiplier: 2,
-    iconCreateFunction: function(c) {
-      const children = c.getAllChildMarkers();
-      const nums = children.map(m => m._hopN).filter(Boolean).sort((a,b) => a - b);
-      // Compact label: range if short enough, otherwise just count
-      let label;
+    maxClusterRadius: 35, spiderfyOnMaxZoom: true, showCoverageOnHover: false, zoomToBoundsOnClick: true, spiderfyDistanceMultiplier: 2,
+    iconCreateFunction(c) {
+      const nums = c.getAllChildMarkers().map(m => m._hopN).filter(Boolean).sort((a, b) => a - b);
       const range = nums[0] + '-' + nums[nums.length - 1];
-      if (nums.length === 1) {
-        label = '' + nums[0];
-      } else if (range.length <= 5) {
-        label = range;
-      } else {
-        label = 'x' + nums.length;
-      }
-      const hasLast = children.some(m => m._isLast);
-      const hasFirst = children.some(m => m._isFirst);
-      const bg = hasLast ? '#10b981' : hasFirst ? '#22d3ee' : '#3b82f6';
-      const shadow = hasLast ? '0 0 14px rgba(16,185,129,.5)' : hasFirst ? '0 0 12px rgba(34,211,238,.4)' : '0 0 12px rgba(59,130,246,.4)';
+      const label = nums.length <= 1 ? '' + (nums[0] || '') : range.length <= 5 ? range : 'x' + nums.length;
+      const hasEnd = c.getAllChildMarkers().some(m => m._isLast), hasStart = c.getAllChildMarkers().some(m => m._isFirst);
+      const bg = hasEnd ? '#10b981' : hasStart ? '#22d3ee' : '#3b82f6';
+      const shadow = hasEnd ? '0 0 14px rgba(16,185,129,.5)' : hasStart ? '0 0 12px rgba(34,211,238,.4)' : '0 0 12px rgba(59,130,246,.4)';
       const sz = label.length > 5 ? 44 : label.length > 3 ? 38 : 34;
       const fs = label.length > 5 ? 9 : label.length > 3 ? 10 : 11;
-      return L.divIcon({
-        html: `<div style="width:${sz}px;height:${sz}px;border-radius:50%;background:${bg};border:2.5px solid rgba(255,255,255,.85);display:flex;align-items:center;justify-content:center;font:700 ${fs}px var(--mono);color:#fff;box-shadow:${shadow};cursor:pointer">${label}</div>`,
-        iconSize: [sz, sz], iconAnchor: [sz/2, sz/2], className: ''
-      });
+      return L.divIcon({ html: `<div style="width:${sz}px;height:${sz}px;border-radius:50%;background:${bg};border:2.5px solid rgba(255,255,255,.85);display:flex;align-items:center;justify-content:center;font:700 ${fs}px var(--mono);color:#fff;box-shadow:${shadow};cursor:pointer">${label}</div>`, iconSize: [sz, sz], iconAnchor: [sz / 2, sz / 2], className: '' });
     }
   });
 
-  // One marker per hop
-  geoHops.forEach((h, hi) => {
-    const isFirst = hi === 0, isLast = hi === geoHops.length - 1;
-    const sz = isLast ? 30 : isFirst ? 28 : 22;
-    const bg = isLast ? '#10b981' : isFirst ? '#22d3ee' : '#3b82f6';
-    const shadow = isLast ? '0 0 14px rgba(16,185,129,.5)' : isFirst ? '0 0 12px rgba(34,211,238,.4)' : '0 0 10px rgba(59,130,246,.35)';
-    const bdr = (isFirst || isLast) ? '2.5px solid rgba(255,255,255,.9)' : '2px solid rgba(255,255,255,.7)';
+  // Markers
+  gh.forEach((h, hi) => {
+    const isFirst = hi === 0, isLast = hi === gh.length - 1, isTarget = !!h._isTarget;
+    const sz = (isTarget || isLast) ? 30 : isFirst ? 28 : 22;
+    const bg = (isTarget || isLast) ? '#10b981' : isFirst ? '#22d3ee' : '#3b82f6';
+    const shadow = (isTarget || isLast) ? '0 0 14px rgba(16,185,129,.5)' : isFirst ? '0 0 12px rgba(34,211,238,.4)' : '0 0 10px rgba(59,130,246,.35)';
+    const bdr = (isFirst || isLast || isTarget) ? '2.5px solid rgba(255,255,255,.9)' : '2px solid rgba(255,255,255,.7)';
     const fs = sz >= 28 ? 11 : 9;
+    const g = h.geo, rc = rttCls(h.rtt);
 
-    const html = `<div style="width:${sz}px;height:${sz}px;border-radius:50%;background:${bg};border:${bdr};display:flex;align-items:center;justify-content:center;font:700 ${fs}px var(--mono);color:#fff;box-shadow:${shadow};cursor:pointer;transition:transform .15s" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'">${h.n}</div>`;
-    const icon = L.divIcon({ html, iconSize: [sz, sz], iconAnchor: [sz/2, sz/2], className: '' });
-    const m = L.marker([h.geo.lat, h.geo.lon], { icon, zIndexOffset: isLast ? 1000 : isFirst ? 900 : h.n * 10 });
-    m._hopN = h.n;
+    const m = L.marker([g.lat, g.lon], {
+      icon: L.divIcon({ html: `<div style="width:${sz}px;height:${sz}px;border-radius:50%;background:${bg};border:${bdr};display:flex;align-items:center;justify-content:center;font:700 ${fs}px var(--mono);color:#fff;box-shadow:${shadow};cursor:pointer;transition:transform .15s" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'">${h.n}</div>`, iconSize: [sz, sz], iconAnchor: [sz / 2, sz / 2], className: '' }),
+      zIndexOffset: isLast ? 1000 : isFirst ? 900 : h.n * 10
+    });
+    m._hopN = typeof h.n === 'number' ? h.n : null;
     m._isFirst = isFirst;
-    m._isLast = isLast;
+    m._isLast = isLast || isTarget;
 
-    const g = h.geo;
-    const rc = rttCls(h.rtt);
-    const rcStyle = rc === 'c-fast' ? 'color:#34d399' : rc === 'c-mid' ? 'color:#f59e0b' : rc === 'c-slow' ? 'color:#ef4444' : 'color:#4a5568';
-    m.bindPopup(
-      `<b>Hop ${h.n}</b> &nbsp;${h.ip}` +
-      (h.hostname ? `<br><span style="color:#8892a8">${h.hostname}</span>` : '') +
-      `<br>${flag(g.cc)} ${g.city ? g.city + ', ' : ''}${g.country}` +
-      (g.org ? `<br><span style="color:#8892a8">${g.asn} ${g.org}</span>` : '') +
-      `<br>RTT: <span style="${rcStyle}">${fmtRtt(h.rtt)}</span>` +
-      (g._corrected ? `<br><span style="color:#f59e0b;font-size:10px">Geo corrected (DB said ${g._origCity || g._origCountry})</span>` : '')
-    );
+    const rcStyle = { 'c-fast': '#34d399', 'c-mid': '#f59e0b', 'c-slow': '#ef4444', 'c-none': '#4a5568' }[rc];
+    m.bindPopup(`<b>Hop ${h.n}</b> ${h.ip}${h.hostname ? '<br><span style="color:#8892a8">' + h.hostname + '</span>' : ''}<br>${flag(g.cc)} ${g.city ? g.city + ', ' : ''}${g.country}${g.org ? '<br><span style="color:#8892a8">' + g.asn + ' ' + g.org + '</span>' : ''}<br>RTT: <span style="color:${rcStyle}">${fmtRtt(h.rtt)}</span>${g._corrected ? '<br><span style="color:#f59e0b;font-size:10px">Geo corrected (DB: ' + (g._origCity || g._origCountry) + ')</span>' : ''}`);
 
-    const locName = g.city || g.country;
-    if (locName) m.bindTooltip(locName, { permanent: false, direction: 'top', offset: [0, -sz/2 - 4], className: 'cl' });
+    const loc = g.city || g.country;
+    if (loc) m.bindTooltip(loc, { permanent: false, direction: 'top', offset: [0, -sz / 2 - 4], className: 'cl' });
 
     cluster.addLayer(m);
     hopMarkers[h.n] = m;
@@ -668,54 +418,49 @@ function renderMap(hops) {
   clusterGroup = cluster;
 }
 
-/* ═══ SIDEBAR RENDERING ═══ */
+/* ═══ SIDEBAR ═══ */
 function renderHop(h, maxRtt) {
   const el = document.createElement('div');
   el.className = 'hop';
-  el.id = 'hop-' + h.n;
-  const g = h.geo;
-  const dc = dotCls(h);
-  const rc = rttCls(h.rtt);
-  const rb = rttBg(h.rtt);
+  const g = h.geo, rc = rttCls(h.rtt), rb = rttBg(h.rtt);
   const rttPct = h.rtt != null && maxRtt > 0 ? Math.min(100, (h.rtt / maxRtt) * 100) : 0;
 
   el.innerHTML =
-    `<div class="hop-tl"><div class="line"></div><div class="dot ${dc}">${h.n}</div><div class="line"></div></div>` +
-    `<div class="hop-bd">` +
-      `<div class="hop-top"><span class="hop-ip">${h.ip || '* * *'}</span>` +
-      (h.hostname ? `<span class="hop-host">${h.hostname}</span>` : '') + `</div>` +
-      (g ? `<div class="hop-loc">${flag(g.cc)} ${g.city ? g.city + ', ' : ''}${g.country}</div>` : '') +
-      (g?.org ? `<div class="hop-org">${g.asn ? g.asn + ' ' : ''}${g.org}</div>` : '') +
-      (g?._corrected ? `<div class="hop-geo-fix">geo corrected (DB: ${g._origCity || g._origCountry})</div>` : '') +
-    `</div>` +
-    `<div class="hop-rtt-col">` +
-      `<div class="hop-rtt-val ${rc}">${fmtRtt(h.rtt)}</div>` +
-      (h.rtt != null ? `<div class="hop-rtt-bar"><div class="fill ${rb}" style="width:${rttPct}%"></div></div>` : '') +
-    `</div>`;
+    `<div class="hop-tl"><div class="line"></div><div class="dot ${dotCls(h)}">${h.n}</div><div class="line"></div></div>` +
+    `<div class="hop-bd"><div class="hop-top"><span class="hop-ip">${h.ip || '* * *'}</span>${h.hostname ? '<span class="hop-host">' + h.hostname + '</span>' : ''}</div>` +
+    (g ? `<div class="hop-loc">${flag(g.cc)} ${g.city ? g.city + ', ' : ''}${g.country}</div>` : '') +
+    (g?.org ? `<div class="hop-org">${g.asn ? g.asn + ' ' : ''}${g.org}</div>` : '') +
+    (g?._corrected ? `<div class="hop-geo-fix">geo corrected (DB: ${g._origCity || g._origCountry})</div>` : '') +
+    `</div><div class="hop-rtt-col"><div class="hop-rtt-val ${rc}">${fmtRtt(h.rtt)}</div>` +
+    (h.rtt != null ? `<div class="hop-rtt-bar"><div class="fill ${rb}" style="width:${rttPct}%"></div></div>` : '') + '</div>';
 
   el.onclick = () => {
-    // Highlight this hop
     document.querySelectorAll('.hop.active').forEach(x => x.classList.remove('active'));
     el.classList.add('active');
-    // Fly to marker
     if (hopMarkers[h.n] && clusterGroup) {
-      const marker = hopMarkers[h.n];
-      // Use cluster's zoomToShowLayer to properly uncluster, then open popup
-      clusterGroup.zoomToShowLayer(marker, () => {
-        setTimeout(() => { try { marker.openPopup(); } catch(e) {} }, 200);
-      });
+      clusterGroup.zoomToShowLayer(hopMarkers[h.n], () => setTimeout(() => { try { hopMarkers[h.n].openPopup(); } catch {} }, 200));
     } else if (g) {
       map.flyTo([g.lat, g.lon], 8, { duration: 0.5 });
     }
   };
-
   $('hops').appendChild(el);
 }
 
-/* ═══ MAIN TRACE ═══ */
+/* ═══ MAIN ═══ */
+function extractHost(input) {
+  let s = input.trim().replace(/^[a-zA-Z][a-zA-Z0-9+.-]*:\/\//, '').split(/[/?#:]/)[0].trim().toLowerCase();
+  if (/^([a-z0-9]([a-z0-9-]*[a-z0-9])?\.)+[a-z]{2,}$/.test(s)) return s;
+  if (/^\d{1,3}(\.\d{1,3}){3}$/.test(s)) return s;
+  if (s.includes(':') && /^[0-9a-f:]+$/.test(s)) return s;
+  return null;
+}
+
 async function runTrace() {
-  const target = $('target').value.trim();
-  if (!target || busy) return;
+  const raw = $('target').value.trim();
+  if (!raw || busy) return;
+  const target = extractHost(raw);
+  if (!target) { setStatus('Invalid hostname or IP', 'err'); return; }
+  $('target').value = target;
   busy = true; $('traceBtn').disabled = true;
   $('histDrop').classList.remove('open');
   clearAll();
@@ -724,105 +469,104 @@ async function runTrace() {
   try {
     setStatus('Launching probe...', 'on'); setProgress(5);
     const selCountry = $('source').value;
-    let measurementId = null;
+    let mid = null;
 
-    // Strategy: try probes in order of preference
-    // 1. Same ASN + same country (best match — same ISP, same region)
-    // 2. Same country (correct DNS region at least)
-    // 3. Worldwide fallback
-    const locAttempts = [];
-    if (!selCountry && myAsn && myCountry) {
-      locAttempts.push({ loc: { country: myCountry, asn: myAsn }, label: 'same ISP (AS' + myAsn + ')' });
-    }
-    locAttempts.push({ loc: selCountry ? { country: selCountry } : myCountry ? { country: myCountry } : { magic: 'world' }, label: selCountry || myCountry || 'worldwide' });
+    // Try same-ASN probe first (closest to user's network), then country fallback
+    const attempts = [];
+    if (!selCountry && myAsn && myCountry) attempts.push({ loc: { country: myCountry, asn: myAsn }, label: 'your ISP' });
+    attempts.push({ loc: selCountry ? { country: selCountry } : myCountry ? { country: myCountry } : { magic: 'world' }, label: selCountry || myCountry || 'worldwide' });
 
-    for (const attempt of locAttempts) {
-      if (measurementId) break;
-      setStatus('Finding probe in ' + attempt.label + '...', 'on');
+    for (const a of attempts) {
+      if (mid) break;
+      setStatus('Probe: ' + a.label + '...', 'on');
       try {
-        const cr = await tFetch(GP + '/measurements', {
-          method: 'POST', headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ type: 'traceroute', target, locations: [attempt.loc], limit: 1, measurementOptions: { protocol: 'ICMP' } })
-        }, 15000);
-        if (cr.ok) {
-          const res = await cr.json();
-          if (res.id) measurementId = res.id;
-        }
-      } catch (e) {}
+        const r = await tFetch(GP + '/measurements', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ type: 'traceroute', target, locations: [a.loc], limit: 1, measurementOptions: { protocol: 'ICMP' } }) }, 15000);
+        if (r.ok) { const j = await r.json(); if (j.id) mid = j.id; }
+      } catch {}
     }
-    if (!measurementId) throw new Error('No probe available');
-
-    const id = measurementId;
+    if (!mid) throw new Error('No probe available');
     setProgress(10);
 
+    // Poll for results
     let data, sec = 0;
     for (let i = 0; i < 60; i++) {
       await new Promise(r => setTimeout(r, 700)); sec += 0.7;
       setStatus('Tracing... ' + sec.toFixed(0) + 's', 'on');
       setProgress(10 + Math.min(58, i * 1.2));
-      try { const r = await tFetch(GP + '/measurements/' + id, {}, 8000); data = await r.json(); if (data.status !== 'in-progress') break; } catch {}
+      try { const r = await tFetch(GP + '/measurements/' + mid, {}, 8000); data = await r.json(); if (data.status !== 'in-progress') break; } catch {}
     }
     if (!data || data.status === 'in-progress') throw new Error('Timed out');
     if (!data.results?.[0]) throw new Error('No probe available');
     setProgress(70);
 
-    const probe = data.results[0].probe;
-    const result = data.results[0].result;
-    const raw = result?.hops || [];
-    if (!raw.length) throw new Error('0 hops returned');
-
-    // Resolved destination IP (shows GeoDNS/anycast differences)
+    const probe = data.results[0].probe, result = data.results[0].result;
+    const rawHops = result?.hops || [];
+    if (!rawHops.length) throw new Error('0 hops returned');
     const resolvedDst = result?.resolvedAddress || '';
 
+    // Probe info
     $('probe').style.display = 'flex';
     const sameAsn = myAsn && probe.asn === myAsn;
-    $('probeTxt').innerHTML = flag(probe.country) + ' ' + probe.city + ', ' + probe.country +
-      ' &middot; ' + probe.network + ' (AS' + probe.asn + ')' +
-      (sameAsn ? ' <span style="color:var(--green2)">&#10003; same ISP</span>' : '') +
-      (resolvedDst ? ' &middot; <span style="color:var(--text)">&#8594; ' + resolvedDst + '</span>' : '');
+    $('probeTxt').innerHTML = `${flag(probe.country)} ${probe.city}, ${probe.country} &middot; ${probe.network} (AS${probe.asn})${sameAsn ? ' <span style="color:var(--green2)">&#10003; same ISP</span>' : ''}${resolvedDst ? ' &middot; <span style="color:var(--text)">&#8594; ' + resolvedDst + '</span>' : ''}`;
 
+    // Probe coords for RTT filter
     let pLat = probe.latitude || 0, pLon = probe.longitude || 0;
     if (!pLat && !pLon && probe.resolvedAddress) {
       const pg = await geolocate(probe.resolvedAddress);
       if (pg) { pLat = pg.lat; pLon = pg.lon; }
     }
 
-    const hops = raw.map((h, i) => {
-      const ip = h.resolvedAddress || null;
-      const hostname = h.resolvedHostname || null;
+    // Parse hops
+    const hops = rawHops.map((h, i) => {
+      const ip = h.resolvedAddress || null, hostname = h.resolvedHostname || null;
       const timings = (h.timings || []).map(t => t.rtt).filter(r => r != null);
       const valid = timings.filter(r => r > 0);
-      return { n: i + 1, ip, hostname: hostname && hostname !== ip ? hostname : null, rtt: valid.length ? valid.reduce((a,b) => a+b)/valid.length : null, rtts: timings.length ? timings : null, last: i === raw.length - 1, geo: null };
+      return { n: i + 1, ip, hostname: hostname && hostname !== ip ? hostname : null, rtt: valid.length ? valid.reduce((a, b) => a + b) / valid.length : null, last: i === rawHops.length - 1, geo: null };
     });
 
+    // Geolocate
     setStatus('Geolocating...', 'on'); setProgress(72);
     const geos = await geoAll(hops.map(h => h.ip));
     hops.forEach((h, i) => h.geo = geos[i]);
 
+    // RTT plausibility fix
     if (!pLat && !pLon) { const fg = hops.find(h => h.geo); if (fg) { pLat = fg.geo.lat; pLon = fg.geo.lon; } }
     if (pLat || pLon) fixGeoOutliers(hops, pLat, pLon);
 
-    const mapped = hops.filter(h => h.geo).length;
-    const pub = hops.filter(h => h.ip && !isPrivate(h.ip)).length;
+    // Fill in first hop from probe info if it's a timeout
+    const firstHop = hops[0];
+    if (firstHop && !firstHop.ip && pLat && pLon) {
+      firstHop.ip = probe.resolvedAddress || probe.network;
+      firstHop.hostname = probe.city;
+      firstHop.geo = { lat: pLat, lon: pLon, city: probe.city || '', cc: probe.country, country: probe.country, org: probe.network || '', asn: 'AS' + probe.asn };
+    }
+
+    // Fill in last hop from resolved destination if it's a timeout
+    const lastHop = hops[hops.length - 1];
+    if (resolvedDst && lastHop && !lastHop.ip) {
+      const dstGeo = await geolocate(resolvedDst);
+      if (dstGeo) { lastHop.ip = resolvedDst; lastHop.hostname = target; lastHop.geo = dstGeo; lastHop._isTarget = true; }
+    }
+
+    const mapped = hops.filter(h => h.geo).length, pub = hops.filter(h => h.ip && !isPrivate(h.ip)).length;
     setProgress(92);
 
+    // Render
     setStatus('Rendering...', 'on');
     const maxRtt = Math.max(...hops.map(h => h.rtt || 0), 1);
-    for (const h of hops) renderHop(h, maxRtt);
-    $('badge').textContent = hops.length + ' hops';
-
+    hops.forEach(h => renderHop(h, maxRtt));
     renderMap(hops);
     setProgress(100);
 
-    const rtts = hops.map(h => h.rtt).filter(r => r != null);
-    const avg = rtts.length ? rtts.reduce((a,b) => a+b) / rtts.length : null;
-    const last = [...hops].reverse().find(h => h.rtt != null);
+    // Summary
+    const rtts = hops.map(h => h.rtt).filter(Boolean);
+    const avg = rtts.length ? rtts.reduce((a, b) => a + b) / rtts.length : null;
+    const finalRtt = [...hops].reverse().find(h => h.rtt != null);
     $('vH').textContent = hops.length;
     $('vM').textContent = mapped + '/' + pub;
     $('vA').textContent = avg != null ? avg.toFixed(1) + ' ms' : '--';
-    $('vF').textContent = last ? last.rtt.toFixed(1) + ' ms' : '--';
+    $('vF').textContent = finalRtt ? finalRtt.rtt.toFixed(1) + ' ms' : '--';
     $('sum').style.display = 'grid';
-
     setStatus(hops.length + ' hops, ' + mapped + ' mapped', 'ok');
   } catch (e) {
     setStatus(e.message, 'err'); console.error(e);
@@ -831,25 +575,16 @@ async function runTrace() {
   }
 }
 
-$('target').addEventListener('keydown', e => { if (e.key === 'Enter') runTrace(); });
+$('target').addEventListener('keydown', e => e.key === 'Enter' && runTrace());
 
 /* ── Auto-detect country + ASN ── */
 (async () => {
   for (const fn of [
-    async () => { const r = await tFetch('https://ipwho.is/', {}, 4000); const d = await r.json(); return { cc: d.country_code, name: d.country, asn: d.connection?.asn, isp: d.connection?.isp || '' }; },
-    async () => { const r = await tFetch('https://get.geojs.io/v1/ip/geo.json', {}, 4000); const d = await r.json(); return { cc: d.country_code, name: d.country, asn: d.asn ? parseInt(d.asn) : 0, isp: d.organization_name || '' }; },
-    async () => { const r = await tFetch('https://reallyfreegeoip.org/json/', {}, 4000); const d = await r.json(); return { cc: d.country_code, name: d.country_name, asn: 0, isp: '' }; }
+    async () => { const d = await (await tFetch('https://ipwho.is/', {}, 4000)).json(); return { cc: d.country_code, name: d.country, asn: d.connection?.asn }; },
+    async () => { const d = await (await tFetch('https://get.geojs.io/v1/ip/geo.json', {}, 4000)).json(); return { cc: d.country_code, name: d.country, asn: d.asn ? +d.asn : 0 }; },
+    async () => { const d = await (await tFetch('https://reallyfreegeoip.org/json/', {}, 4000)).json(); return { cc: d.country_code, name: d.country_name, asn: 0 }; }
   ]) {
-    try {
-      const { cc, name, asn, isp } = await fn();
-      if (cc) {
-        myCountry = cc;
-        if (asn) myAsn = asn;
-        if (isp) myIsp = isp;
-        $('source').options[0].textContent = flag(cc) + ' ' + name + ' (Auto)';
-        return;
-      }
-    } catch {}
+    try { const { cc, name, asn } = await fn(); if (cc) { myCountry = cc; if (asn) myAsn = asn; $('source').options[0].textContent = flag(cc) + ' ' + name + ' (Auto)'; return; } } catch {}
   }
   $('source').options[0].textContent = 'Worldwide';
 })();
